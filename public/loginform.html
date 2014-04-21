@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Welcome</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script src="https://www.google.com/jsapi"></script> <!-- Do you need a script type tag here? I think not...-->
+    
+        <!-- Upon clicking the login or signup buttons, these JS functions will send username/password data to "appdz" -->
+        <script type="text/javascript">
+            /*
+            function Myfunction() {
+                console.log( $('input[name="username"]').val() );
+                $.ajax({
+                    url: 'http://localhost:8000/authentication',
+                    type: 'POST',
+                    data: {
+                        username: $('input[name="username"]').val(),
+                        password: $('input[name="password"]').val()
+                    },
+                    
+                    success: function(response) {
+                        alert('Wrong password!');
+                    }
+                    
+                    
+                    error: function(response) {
+                        alert('Wrong username or password');
+                    }
+                });
+
+            }
+
+
+            function SignUpFunction() {
+                $.ajax({
+                    url: 'http://localhost:8000/signup',
+                    type: 'POST',
+                    data: {
+                        username: $('input[name="username_init"]'),
+                        password: $('input[name="password_init"]'),
+                        firstname: $('input[name="firstname"]'),
+                        lastname: $('input[name="lastname"]')
+                    },
+
+                    success: function(response) {
+                        alert('This username has already been taken.');
+                    }
+                })
+            }
+            
+            */
+        </script>
+    
+
+    </head>
+
+    <body>
+        <h1>Welcome to Tradebook</h1>
+        <p>Please Enter Your Username and Password Below to Log In</p>
+        <form name="logInForm" action="/authentication" method="post">
+            <!--AFTER FORM BUTTON HAS BEEN SUBMITTED, GO TO THE LOCALHOST:8000/HOME URL -->
+            <input type="text" name="username" value="enter username:">
+            <p>Password:</p>
+            <input type="password" name="password">
+            <!-- THE BUTTON BELOW SHOULD SUBMIT THE ENTERED USER DATA -->
+            <input type="submit" name="submit" value="Submit"/>
+            <!-- <input type="button" name="clicker" value="Submit" onclick="Myfunction()"> -->
+        </form>
+
+        <!--
+        <p>New to this site? <a href='http://localhost:8000/signup'>Sign up.</a></p>
+    -->
+
+        <h2>New to this site? Sign up here.</h2>
+        <form name="signUpForm" action="/signup" method="post">
+            <!--sends a post request to the url /signup, and the corresponding code in appdz finds it -->
+            <input type="text" name="firstname" value="first name:">
+            <input type="text" name="lastname" value="last name:">
+            <br>
+            <input type="text" name="username_init" value="enter username:">
+            <p>How would you like people to contact you?</p>
+            <br>
+            Enter a link to your facebook page: <input type="text" name="fb">
+            Or your email address: <input type="text" name="email">
+            Or your phone number: <input type="text" name="phone_number">
+            <p>Password:</p>
+            <input name="password_init" type="password">
+            <!-- THE BUTTON BELOW SHOULD SUBMIT THE ENTERED USER DATA -->
+            <input type="submit" name="submit" value="Submit"/>
+            <!-- <input type="button" name="clicker" value="Submit" onclick="SignUpFunction()"> -->
+        </form>
+
+        <p> After signing up, log in above to get started!</p>
+
+    </body>
+
+</html>
+

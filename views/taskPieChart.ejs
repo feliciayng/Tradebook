@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Your Activity History</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script src="https://www.google.com/jsapi"></script> <!-- Do you need a script type tag here? I think not...-->
+	    <script type="text/javascript">
+	    	var myChart;
+	    	var freqdata = [];
+
+	    	$(document).ready(function() {
+
+	    	function requestData() {
+	    		$.ajax({
+	    			//A request to the server, complete with extended callback request. Inside it, we create chart.
+	    			url:'http://localhost:8000/history/piechart',
+	    			type: "GET",
+	    			success: function(freqs) {
+	    				var jsonobj = freqs;
+	    				var obj = jQuery.parseJSON(jsonobj);
+	    				for(i=0; i<obj.length) {
+	    					freqdata.push( [ obj[i].taskname, parseInt(obj[i].frequency) ] );
+	    				}
+	    			
+	    				//THIS STUFF HERE CREATES THE CHART
+		    			var options = {
+		    				chart: {
+		    					plotBackgroundColor: null,
+		    					plotBorderWidth: null,
+		    					plotShadow: false
+		    				},
+
+		    				title: {
+		    					text: "My Task Frequencies"
+		    				},
+
+		    				tooltip: {
+		    					pointformat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+		    				},
+
+		    				plotOptions: {
+		    					pie: {
+		    						dataLabels: {
+					                    enabled: true,
+					                    color: '#000000',
+					                    connectorColor: '#000000',
+					                    format: '<b>{point.name}</b>: {point.percentage:.1f}%'
+						    		}
+						    	}
+		    				},
+
+		    				series: [{
+		    					type:'pie',
+		    					name: 'Task Frequency',
+		    					data: [
+		    						['breathing', 10],
+		    						['eating', 2]
+		    					]
+		    				}],
+
+		    			};
+
+		    			var chardata = new Highcharts.Chart(options);
+		    			////////////////////NOW THE CHART HAS BEEN CREATED.
+		    		},
+
+		    		cache: false
+
+	    		});
+	    	}
+
+	    	});
+	      
+	    </script>
+	</head>
+
+	<body>
+		<h3><%=firstname%>'s Task Frequencies: </h3>
+		<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+	</body>
+</html>

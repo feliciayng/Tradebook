@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Homepage <%=firstname%></title>
+</head>
+
+<body>
+	<div style="background-color: #000066; display:block; position:relative; padding:20px; padding-bottom:5px">
+		<h1 style="padding-left: 1em; color:white; display:inline-block">TradeBook</h1>
+		<p style="color:white; float:right;"> MarketFeed &nbsp; Bazaars &nbsp; <a style="color:white;" href="http://localhost:8000/tasks">My Stuff</a> &nbsp; <a style="color:white;" href="http://localhost:8000/recommender">Search</a> &nbsp; <a href="http://localhost:8000/logout" style="color:white;">Logout</a></p>
+	</div>
+
+	<h1> Market Feed *Date* </h1>	
+	<p>*Make a ticker - will probably require thorough knowledge of ajax, etc. Also, we need to query db for user info with buttons, and return them w/o page refreshes.*</p>
+	<br>
+	<p> will also need a more thorough inventory for all the items on sale.</p>
+	<br>
+	<p> will need to implement hashtags</p>
+	<br>
+	<p> will need to implement bazaars</p>
+	<ul>
+		<% for(var i=0; i<tasklist.length; i++) { %>
+			<li> <%= tasklist[i] %> </li>
+			<li> <img height="100" src="data:image/jpeg;base64, <%=picturelist[i]%>"/></li>
+			<li> <button type="button" onclick="alert('Contact information pops up. Need to make ajax work...')">Make offer</button> </li>
+		<% } %>
+	</ul>
+
+</body>
+
+</html>

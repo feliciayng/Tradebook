@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<title>Homepage <%=firstname%> </title>
+	</head>
+
+	<body>
+		<h1>Hi, <%=firstname%></h1>
+		<!--Contains a link to the "recommender" interface-->
+		<p> Not sure what to do today? <a href="http://localhost:8000/recommender">Click</a> to get recommendations </p>
+		<br>
+		<p> See your workout frequencies <a href="http://localhost:8000/history">here</a> </p>
+		<br>
+		<p> Add a new workout <a href = 'http://localhost:8000/tasks'>here</a> </p>
+			
+		<br>
+		<br>
+
+		<!--The form below should be on its own task page
+		<form>
+			<h2>Add a new Task!</h2>
+			<input type="text" name="newtaskname" value="task name:">
+			<input type="text" name="username" value="username:">
+		</form>
+
+	-->
+
+		<!--The items listed below are links to other parts of the site and should be organized neatly into a header or footer -->
+		<br>
+		<p><strong>HOME</strong></p>
+		<br>
+		<a href="http://localhost:8000/tasks">My Workouts Page</a>
+		<br>
+		<a href='http://localhost:8000/recommender'>Recommender</a>
+		<br>
+		<a href='http://localhost:8000/history'>History</a>
+		<br>
+		<a href='http://localhost:8000/logout'>Log out</a>
+
+	</body>
+
+
+
+</html>

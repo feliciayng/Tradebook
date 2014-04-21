@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+
+<!-- THIS FORM TAKES USER INPUT ABOUT MOOD & TIME CONSTRAINT -->
+
+    <head>
+        <title>Our recommendations</title>
+    </head>
+
+    <body>
+        <form name="recommondForm" action="/recommended" method="post">
+            <p>Enter a tag you'd like to search for:</p>
+            <input type="text" name="userMood"/>
+            <br>
+            <p>What's your price?</p>
+            <input type="number" name="userTime"/>
+            <br>
+            <p>How many results from the database do you want? (Enter a positive integer)</p>
+            <input type="number" name="numResults"/>
+            <!-- The button below submits the entered user data -->
+            <input type="submit" name="submit" value="Submit"/>
+        </form>
+    </body>
+
+</html>

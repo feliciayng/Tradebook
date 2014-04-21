@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My Inventory</title>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script src="https://www.google.com/jsapi"></script>
+
+		<script language="JavaScript" type="text/javascript">			
+			$(document).ready(function() {				
+				$(".dropdown-init").click(function(){					
+					$(this).find('.dropdown-item').css('display', 'list-item');
+				});
+
+				$(".hide-list").click(function() {
+					alert("WHY DOESN'T THIS BUTTON WORK?!?!?!?!");
+					///WHY DOESN'T THIS WORK?!?!?!?!?!?
+					$(this).parentsUntil($('.dropdown-init')).find('.dropdown-item').css('display', 'none');
+				});
+			});
+			
+			/*
+			function Display_ddinfo () {
+				$('.dropdown-item').css('display', 'list-item');
+			}
+			*/
+		</script>
+
+		<style media="screen" type="text/css">
+			.dropdown-item {
+				display: none;
+			}			
+		</style>
+
+	</head>
+
+	<body>
+		<div style="background-color: #000066; display:block; position:relative; padding:20px; padding-bottom:5px">
+			<h1 style="padding-left: 1em; color:white; display:inline-block">TradeBook</h1>
+			<p style="color:white; float:right;"> <a href="http://localhost:8000/home" style="color:white;">MarketFeed</a> &nbsp; Bazaars &nbsp; <a style="color:white;" href="http://localhost:8000/tasks">My Stuff</a> &nbsp; <a style="color:white;" href="http://localhost:8000/recommender">Search</a> &nbsp; <a href="http://localhost:8000/logout" style="color:white;">Logout</a></p>
+		</div>
+
+		<!-- Change the action url? -->
+		<form name="addtask" action="/tasks/create" method="post" enctype="multipart/form-data">
+			<h2>Add a new item to your inventory!</h2>
+			<input type="text" name="newtaskname" value="name:">
+			Rating (replace field?): <input type="number" name="rating" value="rating:">
+			Min Price (dollars): <input type="number" name="durationmin">
+			Max Price (dollars): <input type="number" name="durationmax">
+			Tag: <input type="text" name="mood">
+			<br>
+			<br>
+			Picture (jpeg only, 16MB limit): <input type="file" name="picture" accept="image/jpg">
+			<br>
+			<br>
+			<textarea name="description" cols="50" rows="5">Enter Description:</textarea>
+			<br>
+			<input type = "submit" name="submit" value="create">
+		</form>
+
+		<!-- Change the action url? -->
+		<form name= "edittask" action="/tasks/edit" method="post" enctype="multipart/form-data">
+			<h2>Edit an item! (This interface needs to be better!)</h2>			
+			<input type="text" name="editTaskName" value="enter existing name:">
+			Rating: <input type="number" name="editRating">
+			Min Price: <input type="number" name="editMinDuration">
+			Max Price: <input type="number" name="editMaxDuration">
+			Tag: <input type="text" name="editMood">
+			<br>
+			<br>
+			Picture (jpeg only, 16MB limit): <input type="file" name="editPicture" accept="image/jpg">
+			<br>
+			<br>
+			<textarea name="editDescription" cols="50" rows="5">Enter Description:</textarea>
+			<br>
+			<input type="submit" name="submit" value="edit">
+		</form>
+
+
+		<!-- Display all your tasks here? -->
+		<h1>My Inventory</h1>
+
+		<ol>
+			<% for(var i=0; i<tasklist.length; i++) { %>
+				<li> 
+					<div class='dropdown-init'>
+						<%= tasklist[i] %>
+						<ul>
+							<li class="dropdown-item"> rating=<%= ratinglist[i] %> </li>
+							<li class="dropdown-item"> price=<%= durationlist[i] %> </li>
+							<li class="dropdown-item"> tag=<%=moodlist[i]%> </li>
+							<li class="dropdown-item">
+								<div>
+									description: <%= descriptionlist[i] %>
+								</div>
+							</li>
+							<li class="dropdown-item"><img height="100" src="data:image/jpeg;base64, <%=pictures[i]%>"/> </li>
+							<li class="dropdown-item">
+								<button class="hide-list">Less</button>
+							</li>
+						</ul>
+					</div>
+					
+				</li>
+			<% } %>
+		</ol>
+		
+	</body>
+
+</html>

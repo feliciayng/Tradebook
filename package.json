@@ -1,0 +1,12 @@
+{
+    "name": "My_First_App",
+    "description": "It's awesome!",
+    "version": "0.0.1",
+    "dependencies": {
+        "express": "3.x",
+        "mongoose": "3.x",
+        "passport": "0.x",
+        "passport-local": "0.x",
+        "ejs": "~0.7.1"
+    }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- this page will display recommendations for the user -->
+<!-- inherit listAll, rateAll, listMe, rateMe -->
+
+<html>
+    <head>
+        <title>Recommendations</title>
+
+        <!-- THIS IS BASICALLY THE SAME CODE AS "TASKPAGE.EJS"-->
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script src="https://www.google.com/jsapi"></script>
+
+        <script language="JavaScript" type="text/javascript">           
+            $(document).ready(function() {            
+                $(".dropdown-init").click(function() {                 
+                    $(this).find('.dropdown-item').css('display', 'list-item');
+                });                
+            });
+        </script>
+
+        <style media="screen" type="text/css">
+            .dropdown-item {
+                display: none;
+            }           
+        </style>
+
+    </head>
+
+    <body>
+
+        <h1>Recommendations from other users:</h1>
+        <!--CHALLENGE: INCLUDE A BUTTON THAT ALLOWS A USER TO ADD A TASK TO THEIR HOMEPAGE FROM HERE!!!!!!!
+        HOW CAN IT BE DONE?!?!?-->
+        <ol>
+            <% for (var i=0; i<listAll.length; i++) { %>
+                <li>  
+                    <div class="dropdown-init">
+                        <%= listAll[i] %>
+                        <ul>
+                            <li class="dropdown-item"> rating = <%= rateAll[i] %> </li>
+                            <li class="dropdown-item"> duration = <%= durationAll[i] %></li>
+                            <li class="dropdown-item"> mood = <%= moodAll[i] %></li>
+                            <li class="dropdown-item"> 
+                                <div>
+                                    description = <%= descriptionAll[i]%> 
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            <% } %>
+        </ol>
+
+        <h1>Your favorite workouts:</h1>
+        <ol>
+            <% for (var i=0; i<listMe.length; i++) { %>
+                <li> <%= listMe[i] %> rating=<%= rateMe[i] %> </li>
+            <% } %>
+        </ol>
+
+        <br>
+        <a href="http://localhost:8000/home">Home</a>
+        <br>
+        <a href="http://localhost:8000/tasks">My Workouts Page</a>
+        <br>
+        <p>TASK RECOMMENDER</p>
+        <br>
+        <a href='http://localhost:8000/history'>History</a>
+        <br>
+        <a href="http://localhost:8000/logout">Log out</a>
+
+    </body>
+
+</html>

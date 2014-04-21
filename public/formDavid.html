@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<!-- THIS FORM ENABLES USERS TO SIGN UP-->
+
+<html>
+
+<script language="JavaScript">
+
+
+// depreciated
+// function printSomething(form){
+// 	var UserVar = form.username.value;
+// 	var PasswordVar = form.password.value;
+// 	alert("User: " + UserVar + "   Password: " + PasswordVar);
+
+// }
+
+</script>
+
+
+	<head>
+		<title>Sign up</title>
+	</head>
+
+	<body>
+		<h1>Enter Username and Password to Sign Up</h1>
+		<form name="signUpForm" action="/signup" method="post">
+			<!--sends a post request to the url /signup, and the corresponding code in appdz finds it -->
+			<input type="text" name="firstname" value="first name:">
+			<input type="text" name="lastname" value="last name:">
+			<br>
+			<input type="text" name="username" value="enter username:">
+			<p>Password:</p>
+			<input type="password" name="password">
+			<!-- THE BUTTON BELOW SHOULD SUBMIT THE ENTERED USER DATA -->
+			<input type="submit" name="submit" value="Submit"/>
+		</form>
+		<p> Already signed up? <a href="http://localhost:8000/login">Log in</a><p>
+	</body>
+
+</html>
